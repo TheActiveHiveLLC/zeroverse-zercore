@@ -1,24 +1,20 @@
-// main.js — ZeroVerse Bootloader
-// Full Copy-Paste Version — Step 4 of Blueprint
+// pages/main.js — Main Page
+// Full Copy-Paste Version — Step 5
 
-import { ZeroVerseEngine } from "./zeroverseEngine.js";
-import { Router } from "./router.js";
-import { WorkerManager } from "./worker/workerManager.js";
+export default function MainPage() {
+    return `
+        <header>
+            <h1>ZeroVerse</h1>
+            <p>Welcome to the ZeroVerse main hub.</p>
+        </header>
 
-const workerManager = new WorkerManager();
+        <section>
+            <p>This is the main page loaded through the Router system.</p>
+            <p>The ZeroVerse Engine and Worker system are running in the background.</p>
+        </section>
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("ZeroVerse Bootloader: DOM Ready");
-
-    // Start engine
-    ZeroVerseEngine.start();
-
-    // Initialize router
-    Router.init();
-
-    // Initialize worker system
-    workerManager.init();
-
-    // Example: run a heavy task in the background
-    workerManager.runHeavyTask(42);
-});
+        <nav>
+            <a href="#/about">Go to About Page</a>
+        </nav>
+    `;
+}
