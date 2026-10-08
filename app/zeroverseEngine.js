@@ -1,39 +1,45 @@
-// zeroverseEngine.js — ZeroVerse Engine (Scene Manager Integrated)
-// Full Copy-Paste Version — Step 6 of Blueprint
+// zeroverseEngine.js — ZeroVerse Engine with Modular Scenes
+// Full Copy-Paste Version — Step 7
 
 export const ZeroVerseEngine = {
     started: false,
     currentScene: null,
 
-    start() {
+    async start() {
         console.log("ZeroVerse Engine: Starting...");
         this.started = true;
 
-        // Load default scene
-        this.loadScene("mainScene");
+        await this.loadScene("mainScene");
     },
 
-    loadScene(sceneName) {
+    async loadScene(sceneName) {
         console.log(`ZeroVerse Engine: Loading scene '${sceneName}'`);
 
         this.currentScene = sceneName;
 
-        const root = document.getElementById("zeroverse-root");
+        try {
+            const sceneModule = await import(`./scenes/${sceneName}.js`);
+            const sceneContent = sceneModule.default();
 
-        root.innerHTML = `
-            <div class="scene">
-                <h1>Scene: ${sceneName}</h1>
-                <p>The ZeroVerse Engine is active.</p>
+            const root = document.getElementById("zeroverse-root");
 
-                <nav>
-                    <a href="#/main">Go to Main Page</a>
-                    <a href="#/about">Go to About Page</a>
-                </nav>
-            </div>
-        `;
+            root.innerHTML = sceneContent;
+
+            console.log(`ZeroVerse Engine: Scene '${sceneName}' loaded successfully`);
+        } catch (err) {
+            console.error(`ZeroVerse Engine: Failed to load scene '${sceneName}'`, err);
+
+            const root = document.getElementById("zeroverse-root");
+
+            root.innerHTML = `
+                <div class="scene">
+                    <h1>Scene Error</h1>
+                    <p>The scene '${sceneName}' could not be loaded.</p>
+                </div>
+            `;
+        }
     },
 
-    // Allow pages to trigger scenes
     goToScene(sceneName) {
         this.loadScene(sceneName);
     }
