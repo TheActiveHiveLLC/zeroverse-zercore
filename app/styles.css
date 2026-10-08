@@ -1,85 +1,86 @@
+/* styles.css — ZeroVerse UI Shell */
+/* Full Copy-Paste Version — Step 3 of Blueprint */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
-  background: #000;
-  color: #eee;
-  font-family: system-ui, sans-serif;
-  margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0e0e0e;
+    color: #f0f0f0;
+    padding: 20px;
 }
 
-.main-nav {
-  background: #111;
-  padding: 0.5rem 1rem;
+/* Root Container */
+#zeroverse-root {
+    width: 100%;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
 }
 
-.main-nav a {
-  color: #eee;
-  margin-right: 1rem;
-  text-decoration: none;
+/* Page Container */
+.page {
+    padding: 20px;
 }
 
-#app {
-  padding: 1rem;
+.page h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.zeroverse-page,
-.zeroverse-dashboard,
-.zv-docs,
-.academy-page,
-.user-profile {
-  max-width: 900px;
-  margin: 0 auto;
+.page p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
 }
 
-.zv-panel {
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 1rem;
-  background: #111;
-  margin-top: 1rem;
+/* Error Page */
+.page-error {
+    padding: 20px;
+    color: #ff6b6b;
 }
 
-.zv-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
+.page-error h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.zv-row label {
-  width: 100px;
+/* Scene Container (Engine) */
+.scene {
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    border: 1px solid #444;
 }
 
-.zv-row input,
-.zv-row select {
-  flex: 1;
-  padding: 0.25rem;
+.scene h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.zv-section {
-  margin-top: 1rem;
+.scene p {
+    font-size: 1.1rem;
 }
 
-.zv-collapse-header {
-  background: #222;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 6px;
-  font-weight: bold;
+/* Navigation Links */
+nav a {
+    display: inline-block;
+    margin-right: 15px;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #f0f0f0;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
 }
 
-.zv-collapse-header.collapsed {
-  opacity: 0.6;
-}
-
-.zv-collapse-content {
-  padding: 10px;
-  border-left: 2px solid #333;
-  margin-top: 5px;
-}
-
-.academy-button {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #00ff88;
-  color: #000;
-  border-radius: 6px;
-  text-decoration: none;
+nav a:hover {
+    background-color: #555;
 }
