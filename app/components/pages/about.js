@@ -1,5 +1,5 @@
-// pages/about.js — About Page (Scene-Aware)
-// Full Copy-Paste Version — Step 6 of Blueprint
+// pages/about.js — About Page (Scene Controls)
+// Full Copy-Paste Version — Step 7
 
 import { ZeroVerseEngine } from "../zeroverseEngine.js";
 
@@ -18,6 +18,7 @@ export default function AboutPage() {
 
         <nav>
             <a href="#/main">Back to Main Page</a>
+            <button onclick="ZeroVerseEngine.goToScene('mainScene')">Load Main Scene</button>
             <button onclick="ZeroVerseEngine.goToScene('aboutScene')">Load About Scene</button>
         </nav>
     `;
