@@ -1,7 +1,8 @@
-// zeroverseEngine.js — ZeroVerse Engine with Config Integration
-// Full Copy-Paste Version — Step 8
+// zeroverseEngine.js — ZeroVerse Engine with Data Layer Integration
+// Full Copy-Paste Version — Step 10
 
 import Config from "./config/config.js";
+import API from "./data/api.js";
 
 export const ZeroVerseEngine = {
     started: false,
@@ -26,8 +27,9 @@ export const ZeroVerseEngine = {
             const sceneContent = sceneModule.default();
 
             const root = document.getElementById("zeroverse-root");
-
             root.innerHTML = sceneContent;
+
+            API.recordSceneLoad();
 
             console.log(`ZeroVerse Engine: Scene '${sceneName}' loaded successfully`);
         } catch (err) {
