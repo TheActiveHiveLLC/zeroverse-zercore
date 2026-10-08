@@ -1,5 +1,7 @@
-// pages/about.js — About Page
-// Full Copy-Paste Version — Step 5
+// pages/about.js — About Page (Scene-Aware)
+// Full Copy-Paste Version — Step 6 of Blueprint
+
+import { ZeroVerseEngine } from "../zeroverseEngine.js";
 
 export default function AboutPage() {
     return `
@@ -9,14 +11,14 @@ export default function AboutPage() {
         </header>
 
         <section>
-            <p>
-                The Router loads pages dynamically, the Engine manages scenes,
-                and the Worker handles background tasks.
-            </p>
+            <p>The Router loads pages dynamically.</p>
+            <p>The Engine manages scenes.</p>
+            <p>The Worker handles background tasks.</p>
         </section>
 
         <nav>
             <a href="#/main">Back to Main Page</a>
+            <button onclick="ZeroVerseEngine.goToScene('aboutScene')">Load About Scene</button>
         </nav>
     `;
 }
