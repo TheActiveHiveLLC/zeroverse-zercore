@@ -1,5 +1,7 @@
-// zeroverseEngine.js — ZeroVerse Engine with Modular Scenes
-// Full Copy-Paste Version — Step 7
+// zeroverseEngine.js — ZeroVerse Engine with Config Integration
+// Full Copy-Paste Version — Step 8
+
+import Config from "./config/config.js";
 
 export const ZeroVerseEngine = {
     started: false,
@@ -7,6 +9,8 @@ export const ZeroVerseEngine = {
 
     async start() {
         console.log("ZeroVerse Engine: Starting...");
+        console.log("ZeroVerse Config:", Config.getInfo());
+
         this.started = true;
 
         await this.loadScene("mainScene");
@@ -35,6 +39,7 @@ export const ZeroVerseEngine = {
                 <div class="scene">
                     <h1>Scene Error</h1>
                     <p>The scene '${sceneName}' could not be loaded.</p>
+                    <p>Config: ${Config.getInfo()}</p>
                 </div>
             `;
         }
