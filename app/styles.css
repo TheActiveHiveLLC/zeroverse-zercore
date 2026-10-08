@@ -1,1 +1,85 @@
+body {
+  background: #000;
+  color: #eee;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
 
+.main-nav {
+  background: #111;
+  padding: 0.5rem 1rem;
+}
+
+.main-nav a {
+  color: #eee;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+#app {
+  padding: 1rem;
+}
+
+.zeroverse-page,
+.zeroverse-dashboard,
+.zv-docs,
+.academy-page,
+.user-profile {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.zv-panel {
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #111;
+  margin-top: 1rem;
+}
+
+.zv-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.zv-row label {
+  width: 100px;
+}
+
+.zv-row input,
+.zv-row select {
+  flex: 1;
+  padding: 0.25rem;
+}
+
+.zv-section {
+  margin-top: 1rem;
+}
+
+.zv-collapse-header {
+  background: #222;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.zv-collapse-header.collapsed {
+  opacity: 0.6;
+}
+
+.zv-collapse-content {
+  padding: 10px;
+  border-left: 2px solid #333;
+  margin-top: 5px;
+}
+
+.academy-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #00ff88;
+  color: #000;
+  border-radius: 6px;
+  text-decoration: none;
+}
