@@ -1,61 +1,40 @@
-// router.js — ZeroVerse Router System (Scene-Aware)
+// zeroverseEngine.js — ZeroVerse Engine (Scene Manager Integrated)
 // Full Copy-Paste Version — Step 6 of Blueprint
 
-import { ZeroVerseEngine } from "./zeroverseEngine.js";
+export const ZeroVerseEngine = {
+    started: false,
+    currentScene: null,
 
-export const Router = {
-    currentPage: null,
+    start() {
+        console.log("ZeroVerse Engine: Starting...");
+        this.started = true;
 
-    init() {
-        console.log("Router: Initializing");
-
-        window.addEventListener("hashchange", () => {
-            this.handleRoute(window.location.hash);
-        });
-
-        this.handleRoute(window.location.hash || "#/main");
+        // Load default scene
+        this.loadScene("mainScene");
     },
 
-    handleRoute(hash) {
-        const route = hash.replace("#/", "");
+    loadScene(sceneName) {
+        console.log(`ZeroVerse Engine: Loading scene '${sceneName}'`);
 
-        console.log(`Router: Navigating to '${route}'`);
+        this.currentScene = sceneName;
 
-        this.loadPage(route);
+        const root = document.getElementById("zeroverse-root");
+
+        root.innerHTML = `
+            <div class="scene">
+                <h1>Scene: ${sceneName}</h1>
+                <p>The ZeroVerse Engine is active.</p>
+
+                <nav>
+                    <a href="#/main">Go to Main Page</a>
+                    <a href="#/about">Go to About Page</a>
+                </nav>
+            </div>
+        `;
     },
 
-    async loadPage(pageName) {
-        try {
-            const pageModule = await import(`./pages/${pageName}.js`);
-            const pageContent = pageModule.default();
-
-            const root = document.getElementById("zeroverse-root");
-
-            root.innerHTML = `
-                <div class="page">
-                    ${pageContent}
-                </div>
-            `;
-
-            this.currentPage = pageName;
-
-            console.log(`Router: Page '${pageName}' loaded successfully`);
-        } catch (err) {
-            console.error(`Router: Failed to load page '${pageName}'`, err);
-
-            const root = document.getElementById("zeroverse-root");
-
-            root.innerHTML = `
-                <div class="page-error">
-                    <h1>404 — Page Not Found</h1>
-                    <p>The page '${pageName}' does not exist.</p>
-                </div>
-            `;
-        }
-    },
-
-    // Allow scenes to trigger page navigation
-    goToPage(pageName) {
-        window.location.hash = `#/${pageName}`;
+    // Allow pages to trigger scenes
+    goToScene(sceneName) {
+        this.loadScene(sceneName);
     }
 };
