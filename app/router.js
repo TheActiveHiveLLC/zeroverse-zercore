@@ -1,5 +1,5 @@
-// router.js — ZeroVerse Router System (Scene-Aware)
-// Full Copy-Paste Version — Step 6 of Blueprint
+// router.js — ZeroVerse Router System (with Dashboard)
+// Full Copy-Paste Version — Step 9
 
 import { ZeroVerseEngine } from "./zeroverseEngine.js";
 
@@ -54,7 +54,6 @@ export const Router = {
         }
     },
 
-    // Allow scenes to trigger page navigation
     goToPage(pageName) {
         window.location.hash = `#/${pageName}`;
     }
