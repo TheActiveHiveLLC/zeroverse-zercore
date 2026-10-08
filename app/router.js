@@ -1,7 +1,8 @@
-// router.js — ZeroVerse Router System (with Dashboard)
-// Full Copy-Paste Version — Step 9
+// router.js — ZeroVerse Router with Data Layer Integration
+// Full Copy-Paste Version — Step 10
 
 import { ZeroVerseEngine } from "./zeroverseEngine.js";
+import API from "./data/api.js";
 
 export const Router = {
     currentPage: null,
@@ -38,6 +39,8 @@ export const Router = {
             `;
 
             this.currentPage = pageName;
+
+            API.recordPageLoad();
 
             console.log(`Router: Page '${pageName}' loaded successfully`);
         } catch (err) {
