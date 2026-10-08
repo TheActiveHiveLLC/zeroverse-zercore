@@ -1,10 +1,8 @@
-import { navigate } from './router.js';
+// main.js — ZeroVerse Bootloader
 
-function handleHashChange() {
-  const raw = location.hash.slice(1) || '/';
-  const path = raw.split('?')[0];
-  navigate(path);
-}
+import { ZeroVerseEngine } from "./zeroverseEngine.js";
 
-window.addEventListener('hashchange', handleHashChange);
-handleHashChange();
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("ZeroVerse Bootloader: DOM Ready");
+    ZeroVerseEngine.start();
+});
