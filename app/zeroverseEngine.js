@@ -1,33 +1,40 @@
-// ZeroVerse Engine — Step 1 Initialization
-// Blueprint: Blind‑Friendly Copy‑Paste Version
+// zeroverseEngine.js — ZeroVerse Engine (Scene Manager Integrated)
+// Full Copy-Paste Version — Step 6 of Blueprint
 
 export const ZeroVerseEngine = {
     started: false,
+    currentScene: null,
 
     start() {
         console.log("ZeroVerse Engine: Starting...");
-
         this.started = true;
 
-        // Load initial scene
-        this.loadScene("main");
+        // Load default scene
+        this.loadScene("mainScene");
     },
 
     loadScene(sceneName) {
         console.log(`ZeroVerse Engine: Loading scene '${sceneName}'`);
 
-        const sceneElement = document.getElementById("zeroverse-root");
+        this.currentScene = sceneName;
 
-        if (!sceneElement) {
-            console.error("ZeroVerse Engine: Missing #zeroverse-root element.");
-            return;
-        }
+        const root = document.getElementById("zeroverse-root");
 
-        sceneElement.innerHTML = `
+        root.innerHTML = `
             <div class="scene">
                 <h1>Scene: ${sceneName}</h1>
-                <p>ZeroVerse Engine is active.</p>
+                <p>The ZeroVerse Engine is active.</p>
+
+                <nav>
+                    <a href="#/main">Go to Main Page</a>
+                    <a href="#/about">Go to About Page</a>
+                </nav>
             </div>
         `;
+    },
+
+    // Allow pages to trigger scenes
+    goToScene(sceneName) {
+        this.loadScene(sceneName);
     }
 };
