@@ -1,5 +1,7 @@
-// router.js — ZeroVerse Router System
-// Full Copy-Paste Version — Step 2 of Blueprint
+// router.js — ZeroVerse Router System (Scene-Aware)
+// Full Copy-Paste Version — Step 6 of Blueprint
+
+import { ZeroVerseEngine } from "./zeroverseEngine.js";
 
 export const Router = {
     currentPage: null,
@@ -7,12 +9,10 @@ export const Router = {
     init() {
         console.log("Router: Initializing");
 
-        // Listen for hash changes
         window.addEventListener("hashchange", () => {
             this.handleRoute(window.location.hash);
         });
 
-        // Load initial route
         this.handleRoute(window.location.hash || "#/main");
     },
 
@@ -27,7 +27,6 @@ export const Router = {
     async loadPage(pageName) {
         try {
             const pageModule = await import(`./pages/${pageName}.js`);
-
             const pageContent = pageModule.default();
 
             const root = document.getElementById("zeroverse-root");
@@ -53,5 +52,10 @@ export const Router = {
                 </div>
             `;
         }
+    },
+
+    // Allow scenes to trigger page navigation
+    goToPage(pageName) {
+        window.location.hash = `#/${pageName}`;
     }
 };
